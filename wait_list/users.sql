@@ -1,7 +1,8 @@
-CREATE TABLE users ( 
+CREATE TABLE messages ( 
     name VARCHAR(255),
-    email VARCHAR(255) PRIMARY KEY, 
+    email VARCHAR(255),
+    msg TEXT,
     created_at TIMESTAMP DEFAULT NOW()
     );
     
-INSERT INTO users (name, email) VALUES ('David', 'What days are you open?');
+INSERT INTO messages (name, email, msg) VALUES ('Jordan', 'example@gmail.com', 'hi how are you');
