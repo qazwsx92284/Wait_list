@@ -57,9 +57,16 @@ app.post("/home", function(req, res) {
 
 		if(err) throw err;
 		
-	//	res.render("home", {data: total});
-
-		res.render("confirm",{person: name}); //take back to home page.
+		var qq ='SELECT * FROM messages AS data ORDER BY created_at DESC LIMIT 1';
+		connection.query(qq, function(err, results){
+			if(err) throw err;
+			var name = results[0].name;
+			var email = results[0].email;
+			var msg = results[0].msg;
+			var time = results[0].created_at;
+			res.render("confirm",
+					   {name: name ,email: email,msg: msg, time: time}); 
+		});
 	});
 });
 
